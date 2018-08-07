@@ -6,6 +6,10 @@ export class Tamagotchi {
     this.gameover = false;
     this.score = score;
   }
+  //
+  // this.foodLevel = foodLevel;
+  // this.playLevel = playLevel;
+  // this.restLevel = restLevel;
 
 
   getFood() {
