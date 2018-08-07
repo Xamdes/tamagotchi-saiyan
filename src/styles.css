@@ -2,7 +2,6 @@ span {
   font-size: 45px;
   color: red;
 }
-
 p {
   font-size: 45px;
   color: blue;
@@ -10,3 +9,37 @@ p {
 button {
   font-size: 45px;
 }
+.logoimg
+{
+  animation: logotest;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 5s;
+}
+.homeindex
+{
+  text-align: center;
+}
+a:hover
+{
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* .background
+{
+  background-image: url("./img/background.jpg");
+} */
+/* @keyframe logotest
+{
+ 0% {
+    transform: scale(1);
+    background-color:red;
+  }
+  80% {
+    background-color: green;
+    transform: scale(0.5);
+  }
+  100% {
+    background-color: yellow;
+    transform: scale(1.5);
+  }
+ } */

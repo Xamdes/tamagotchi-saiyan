@@ -24,27 +24,56 @@ export class Tamagotchi {
 
 
 startGame() {
+  let count = 0;
   const test = setInterval(() => {
-  this.foodLevel -= 1;
-  this.getFood();
-  //document.getElementById("test").innerHTML = this.foodLevel;
-  this.playLevel -= 1;
-  this.getPlay();
-  //document.getElementById("test1").innerHTML = this.playLevel;
-  this.restLevel -= 1;
-  this.getRest();
-  //document.getElementById("test2").innerHTML = this.restLevel;
-  if (this.foodLevel === 0) {
-    clearInterval(test);
-    document.getElementById("test3").innerHTML = "Dead by food";
-  } else if (this.playLevel === 0) {
-    clearInterval(test);
-    document.getElementById("test3").innerHTML = "Dead by bus or something";
-  } else if (this.restLevel === 0) {
-    clearInterval(test);
-    document.getElementById("test3").innerHTML = "Deaddddd by sleep";
-  }
-}, 50);
+    count++;
+    console.log(count);
+    if(count > 510){
+      clearInterval(test);
+    }
+    this.foodLevel -= 1;
+    this.getFood();
+    //document.getElementById("test").innerHTML = this.foodLevel;
+    this.playLevel -= 1;
+    this.getPlay();
+    //document.getElementById("test1").innerHTML = this.playLevel;
+    this.restLevel -= 1;
+    this.getRest();
+    //document.getElementById("test2").innerHTML = this.restLevel;
+    if (this.foodLevel === 0) {
+      // clearInterval(test);
+      document.getElementById("test3").innerHTML = "Dead by food";
+    } else if (this.playLevel === 0) {
+      // clearInterval(test);
+      document.getElementById("test3").innerHTML = "Dead by bus or something";
+    } else if (this.restLevel === 0) {
+      // clearInterval(test);
+      document.getElementById("test3").innerHTML = "Deaddddd by sleep";
+    }
+  }, 100);
+}
+furtherBeyond() {
+  const test = setInterval(() => {
+    this.foodLevel -= 1;
+    this.getFood();
+    //document.getElementById("test").innerHTML = this.foodLevel;
+    this.playLevel -= 1;
+    this.getPlay();
+    //document.getElementById("test1").innerHTML = this.playLevel;
+    this.restLevel -= 1;
+    this.getRest();
+    //document.getElementById("test2").innerHTML = this.restLevel;
+    if (this.foodLevel === 0) {
+      clearInterval(test);
+      document.getElementById("test3").innerHTML = "Dead by food";
+    } else if (this.playLevel === 0) {
+      clearInterval(test);
+      document.getElementById("test3").innerHTML = "Dead by bus or something";
+    } else if (this.restLevel === 0) {
+      clearInterval(test);
+      document.getElementById("test3").innerHTML = "Deaddddd by sleep";
+    }
+  }, 25);
 }
 // getFood() {
 //   const test = setInterval(() => {
