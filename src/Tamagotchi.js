@@ -1,8 +1,9 @@
 export class Tamagotchi {
-  constructor(foodLevel, playLevel, restLevel) {
+  constructor(foodLevel, playLevel, restLevel, score = 0) {
     this.foodLevel = foodLevel;
     this.playLevel = playLevel;
     this.restLevel = restLevel;
+    this.score = score;
   }
 
 
@@ -21,14 +22,16 @@ export class Tamagotchi {
     //return that.restLevel;
     document.getElementById("test2").innerHTML = that.restLevel;
   }
-
+  getScore(){
+    let that = this;
+    document.getElementById("scorez").innerHTML = that.score;
+  }
 
 startGame() {
   let count = 0;
   const test = setInterval(() => {
     count++;
-    console.log(count);
-    if(count > 510){
+    if(count > 505){
       clearInterval(test);
     }
     this.foodLevel -= 1;
@@ -40,14 +43,19 @@ startGame() {
     this.restLevel -= 1;
     this.getRest();
     //document.getElementById("test2").innerHTML = this.restLevel;
+    this.score += 1;
+    this.getScore();
     if (this.foodLevel === 0) {
-      // clearInterval(test);
+      clearInterval(test);
+      $(".playagain").show();
       document.getElementById("test3").innerHTML = "Dead by food";
     } else if (this.playLevel === 0) {
-      // clearInterval(test);
+      clearInterval(test);
+      $(".playagain").show();
       document.getElementById("test3").innerHTML = "Dead by bus or something";
     } else if (this.restLevel === 0) {
-      // clearInterval(test);
+      clearInterval(test);
+      $(".playagain").show();
       document.getElementById("test3").innerHTML = "Deaddddd by sleep";
     }
   }, 100);
@@ -63,6 +71,8 @@ furtherBeyond() {
     this.restLevel -= 1;
     this.getRest();
     //document.getElementById("test2").innerHTML = this.restLevel;
+    this.score += 1;
+    this.getScore();
     if (this.foodLevel === 0) {
       clearInterval(test);
       document.getElementById("test3").innerHTML = "Dead by food";
