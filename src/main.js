@@ -13,13 +13,33 @@ $(document).ready(function() {
     const newPet = new Tamagotchi(100, 100, 100);
     setTimeout(function(){
       $(".game").fadeIn();
-      newPet.startGame();
+      let promise = new Promise(function(resolve, reject) {
+        newPet.startGame();
+        setTimeout(function(){if (newPet.score > 440) {
+          resolve();
+        } else {
+          reject();
+        }
+      }, 45000);
+      });
+      promise.then(function() {
+        if(newPet.gameover === false){
+          newPet.furtherBeyond();
+          $("#firstguy").hide();
+          $("#secondguy").show();
+        }
+      }, function(){
+        song.pause();
+        $("#firstguy").hide();
+        $("#rip").show();
+      });
+
     }, 6500);
-    setTimeout(function(){
-      newPet.furtherBeyond();
-      $("#firstguy").hide();
-      $("#secondguy").show();
-    }, 51000);
+    // setTimeout(function(){
+    //   newPet.furtherBeyond();
+    //   $("#firstguy").hide();
+    //   $("#secondguy").show();
+    // }, 51000);
     $(".homeindex").addClass("animated bounceOut");
     setTimeout(function(){$(".homeindex").hide()}, 1000);
 

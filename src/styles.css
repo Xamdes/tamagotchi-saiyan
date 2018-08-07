@@ -44,7 +44,7 @@ a:hover
 #secondguy
 {
   float:right;
-  width: 300px;
+  width: 350px;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-duration: 0.3s;
 }
