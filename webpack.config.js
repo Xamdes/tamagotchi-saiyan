@@ -105,7 +105,13 @@ module.exports = {
         options: {
           presets: ['es2015']
         }
-      }
+      },
+      {
+         test: /\.(png|svg|jpg|gif|mp3)$/,
+         use: [
+           'file-loader'
+         ]
+       }
     ]
   }
 };

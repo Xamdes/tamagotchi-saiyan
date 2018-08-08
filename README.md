@@ -1,4 +1,4 @@
-# Project: tama
+# Project: Tamagotchi Saiyan
 
 ## Author(s)
 
@@ -7,4 +7,3 @@
 ## Helpful to Remember
 
 ## License
-
