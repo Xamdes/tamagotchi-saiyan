@@ -10,6 +10,7 @@ $(document).ready(function() {
   $(".indexp").one('click',function(){
     let song = new Audio("../src/audio/song.mp3");
     song.play();
+    song.loop = true;
     const newPet = new Tamagotchi(100, 100, 100);
     setTimeout(function(){
       $(".game").fadeIn();
