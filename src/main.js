@@ -19,15 +19,20 @@ $(function()
   SetImageSource('logo-gif',Logo);
   SetImageSource("firstguy",Tama1);
   SetImageSource("secondguy",Tama2);
+  const song = new Audio(SongOne);
+  song.loop = true;
+  const newPet = new Tamagotchi();
 
 
-  $(".indexp").one('click',function()
+  $(".indexp").click(function()
   {
-    let song = new Audio(SongOne);
+    song.currentTime = 0.0;
     song.play();
-    song.loop = true;
+    $("#firstguy").hide();
+    $("#secondguy").hide();
+    $("#rip").hide();
 
-    const newPet = new Tamagotchi(750, 750, 750);
+    newPet.SetPet(10, 750, 750);
 
     setTimeout(() => {
       $(".game").fadeIn();
@@ -56,9 +61,10 @@ $(function()
       },
       function()
       {
-        song.pause();
+        song.stop();
         $("#firstguy").hide();
         $("#rip").show();
+        $("#play-again-toggle").show();
       });
 
     }, 6500);
@@ -70,6 +76,7 @@ $(function()
         $("#firstguy").hide();
         $("#secondguy").hide();
         $("#rip").show();
+        $("#play-again-toggle").show();
         song.pause();
         clearInterval(checkGameOver);
       }
@@ -107,7 +114,14 @@ $(function()
       $("#outPlay").html(newPet.GetPlay());
       $("#outSleep").html(newPet.GetRest());
     },25);
-  })
+  });
+
+  $("#play-again-button").click(function()
+  {
+    $(".game").fadeOut();
+    $(".homeindex").fadeIn();
+  });
+
 
 });
 

@@ -1,7 +1,17 @@
 export class Tamagotchi
 {
 
-  constructor(foodLevel, playLevel, restLevel, gameover, score = 0) {
+  constructor(foodLevel = 100, playLevel= 100, restLevel = 100, score = 0) {
+    this.foodLevel = foodLevel;
+    this.playLevel = playLevel;
+    this.restLevel = restLevel;
+    this.gameover = false;
+    this.score = score;
+    this.gameOverWhy = "No Reason";
+  }
+
+  SetPet(foodLevel, playLevel, restLevel, score = 0)
+  {
     this.foodLevel = foodLevel;
     this.playLevel = playLevel;
     this.restLevel = restLevel;
