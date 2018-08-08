@@ -23,14 +23,35 @@
     </div>
     <div class=" initial-hidden game">
       <div class="jumbotron">
-        <p>SCORE: <span id="scorez"></span></p>
+        <p>SCORE: <span id="output-score"></span></p>
       </div>
       <img id="firstguy" class="animated bounce">
       <img id="secondguy" class="animated bounce initial-hidden">
       <img id="rip" class="initial-hidden">
-      <p>Food: <span id="test"></span><button type="button" name="button" id="food">Click to Feed</button></p>
-      <p>Activity: <span id="test1"></span><button type="button" name="button" id="play">Click to Play</button></p>
-      <p>Rest: <span id="test2"></span><button type="button" name="button" id="sleep">Click to Sleep</button></p>
+      <div class="row">
+        <div class="col-md-6">
+          Food: <span id="outFood"></span>
+        </div>
+        <div class="col-md-6">
+          <button type="button" name="button" id="food">Click to Feed</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          Activity: <span id="outPlay"></span>
+        </div>
+        <div class="col-md-6">
+          <button type="button" name="button" id="play">Click to Play</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          Rest: <span id="outSleep"></span>
+        </div>
+        <div class="col-md-6">
+          <button type="button" name="button" id="sleep">Click to Sleep</button>
+        </div>
+      </div>
       <div class="playagain initial-hidden">
         <a href="../src/index.html">Play Again!</a>
       </div>
