@@ -17971,25 +17971,7 @@ $(function () {
   song.loop = true;
   var newPet = new _Tamagotchi.Tamagotchi();
 
-  var promise = new Promise(function (resolve, reject) {
-    var request = new XMLHttpRequest();
-    var url = 'https://rickandmortyapi.com/api/character/';
-    request.onload = function () {
-      if (this.status != 429) {
-        resolve(request.response);
-      } else {
-        reject(Error(request.statusText));
-      }
-    };
-    request.open("GET", url, true);
-    request.send();
-  });
-
-  promise.then(function (response) {
-    var body = JSON.parse(response);
-    SetImageSource("firstguy", body.results[0].image);
-    SetImageSource("secondguy", body.results[1].image);
-  });
+  GetRickMortyImage();
 
   $(".indexp").click(function () {
     song.currentTime = 0.0;
@@ -18020,7 +18002,7 @@ $(function () {
           $("#secondguy").show();
         }
       }, function () {
-        song.stop();
+        song.pause();
         $("#firstguy").hide();
         $("#rip").show();
         $("#play-again-toggle").show();
@@ -18075,6 +18057,7 @@ $(function () {
   });
 
   $("#play-again-button").click(function () {
+    $(".homeindex").removeClass("animated bounceOut");
     $(".game").fadeOut();
     $(".homeindex").fadeIn();
   });
@@ -18082,6 +18065,37 @@ $(function () {
 
 function SetImageSource(where, source) {
   $("#" + where).attr("src", source);
+}
+
+function GetRickMortyImage() {
+  var randomInt = GetRandomInt(1, 25);
+  var url = 'https://rickandmortyapi.com/api/character/?page=' + randomInt;
+
+  var promise = new Promise(function (resolve, reject) {
+    var request = new XMLHttpRequest();
+    request.onload = function () {
+      if (this.status != 429) {
+        resolve(request.response);
+      } else {
+        reject(Error(request.statusText));
+      }
+    };
+    request.open("GET", url, true);
+    request.send();
+  });
+
+  promise.then(function (response) {
+    var normal = GetRandomInt(0, 19);
+    var saiyan = GetRandomInt(0, 19);
+    var body = JSON.parse(response);
+    console.log(body);
+    SetImageSource("firstguy", body.results[normal].image);
+    SetImageSource("secondguy", body.results[saiyan].image);
+  });
+}
+
+function GetRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
