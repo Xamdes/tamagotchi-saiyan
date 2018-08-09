@@ -17672,7 +17672,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/* eslint-disable no-unused-vars */
 var Tamagotchi = exports.Tamagotchi = function () {
+  /* eslint-enable no-unused-vars */
   function Tamagotchi() {
     var foodLevel = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
     var playLevel = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
@@ -17891,17 +17893,6 @@ module.exports = __webpack_require__.p + "492960338c6f3542c67b712bb882e26d.png";
 
 /***/ }),
 
-/***/ "./src/img/Tamagotchi2.png":
-/*!*********************************!*\
-  !*** ./src/img/Tamagotchi2.png ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "4861b5deaba50976cd910a5651f56104.png";
-
-/***/ }),
-
 /***/ "./src/img/rip.png":
 /*!*************************!*\
   !*** ./src/img/rip.png ***!
@@ -17941,10 +17932,6 @@ var _Tamagotchi2 = __webpack_require__(/*! ./img/Tamagotchi.png */ "./src/img/Ta
 
 var _Tamagotchi3 = _interopRequireDefault(_Tamagotchi2);
 
-var _Tamagotchi4 = __webpack_require__(/*! ./img/Tamagotchi2.png */ "./src/img/Tamagotchi2.png");
-
-var _Tamagotchi5 = _interopRequireDefault(_Tamagotchi4);
-
 var _song = __webpack_require__(/*! ./audio/song.mp3 */ "./src/audio/song.mp3");
 
 var _song2 = _interopRequireDefault(_song);
@@ -17960,6 +17947,8 @@ __webpack_require__(/*! ./styles.css */ "./src/styles.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var characterId = "current-character";
+//import Tama2 from './img/Tamagotchi2.png';
+
 
 var characters = [];
 GetRickMortyImage(characters);
