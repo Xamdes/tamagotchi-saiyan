@@ -1,9 +1,9 @@
-import { Tamagotchi } from './Tamagotchi';
+import {Tamagotchi} from './Tamagotchi';
 import Rip from './img/rip.png';
 import Head from './img/Tamagotchi-Head.jpg';
 import Logo from './img/Tamagotchi-Logo.gif';
 import Tama1 from './img/Tamagotchi.png';
-import Tama2 from './img/Tamagotchi2.png';
+//import Tama2 from './img/Tamagotchi2.png';
 import SongOne from './audio/song.mp3'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';

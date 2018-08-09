@@ -33,7 +33,7 @@ module.exports = {
           compress: {
             arrows: true,
             booleans: true,
-            collapse_vars: false,
+            collapse_vars: true,
             comparisons: true,
             computed_props: true,
             conditionals: true,
@@ -46,18 +46,18 @@ module.exports = {
             //hoist_var tends to increase file size if enabled
             hoist_vars: false,
             if_return: true,
-            inline: false,
+            inline: true,
             join_vars: true,
-            keep_classnames: true,
-            keep_fnames: true,
+            keep_classnames: false,
+            keep_fnames: false,
             keep_infinity: true,
             loops: true,
             negate_iife: true,
             passes: 3,
             properties: true,
             reduce_funcs: false,
-            reduce_vars: true,
-            sequences: 15,
+            reduce_vars: false,
+            sequences: 200,
             side_effects: false,
             switches: true,
             toplevel: false,
@@ -67,7 +67,7 @@ module.exports = {
             unused: false,
             warnings: false,
           },
-          mangle: false,
+          mangle: true,
         }
       })
     ]
@@ -85,11 +85,11 @@ module.exports = {
       inject: 'body'
     })
   ],
-  // performance:
-  // {
-  //   hints: false
-  // },
-  // mode: 'development',
+  performance:
+  {
+    hints: false
+  },
+  mode: 'development',
   module: {
     rules: [
       {

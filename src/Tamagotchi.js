@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 export class Tamagotchi
 {
-
+/* eslint-enable no-unused-vars */
   constructor(foodLevel = 100, playLevel= 100, restLevel = 100, score = 0) {
     this.foodLevel = foodLevel;
     this.playLevel = playLevel;
