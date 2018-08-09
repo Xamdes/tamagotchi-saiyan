@@ -17971,6 +17971,26 @@ $(function () {
   song.loop = true;
   var newPet = new _Tamagotchi.Tamagotchi();
 
+  var promise = new Promise(function (resolve, reject) {
+    var request = new XMLHttpRequest();
+    var url = 'https://rickandmortyapi.com/api/character/';
+    request.onload = function () {
+      if (this.status != 429) {
+        resolve(request.response);
+      } else {
+        reject(Error(request.statusText));
+      }
+    };
+    request.open("GET", url, true);
+    request.send();
+  });
+
+  promise.then(function (response) {
+    var body = JSON.parse(response);
+    SetImageSource("firstguy", body.results[0].image);
+    SetImageSource("secondguy", body.results[1].image);
+  });
+
   $(".indexp").click(function () {
     song.currentTime = 0.0;
     song.play();
