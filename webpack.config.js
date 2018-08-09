@@ -24,9 +24,12 @@ module.exports = {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
+        cache: false,
+        parallel: true,
         sourceMap: true,
         uglifyOptions: {
-          ecma: 6,
+          ecma: 8,
+          cache: false,
           compress: {
             arrows: true,
             booleans: true,
@@ -39,29 +42,32 @@ module.exports = {
             ecma: 6,
             evaluate: true,
             hoist_funs: false,
-            hoist_props: false,
+            hoist_props: true,
             //hoist_var tends to increase file size if enabled
             hoist_vars: false,
             if_return: true,
-            inline: 1,
+            inline: false,
             join_vars: true,
+            keep_classnames: true,
+            keep_fnames: true,
             keep_infinity: true,
             loops: true,
-            negate_iife: false,
+            negate_iife: true,
             passes: 3,
-            properties: false,
-            reduce_funcs: true,
+            properties: true,
+            reduce_funcs: false,
             reduce_vars: true,
-            sequences: 5,
+            sequences: 15,
             side_effects: false,
             switches: true,
             toplevel: false,
-            top_retain: true,
+            top_retain: null,
             typeofs: false,
             unsafe: false,
             unused: false,
             warnings: false,
           },
+          mangle: false,
         }
       })
     ]
