@@ -1,13 +1,21 @@
 span {
-  font-size: 45px;
+  font-size: 2em;
   color: red;
+  text-align: center;
+  vertical-align: middle;
 }
+
 p {
-  font-size: 45px;
+  font-size: 2em;
   color: blue;
+  text-align: center;
+  vertical-align: middle;
 }
+
 button {
-  font-size: 45px;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .homeindex
@@ -35,16 +43,22 @@ a:hover
 {
   width:75%;
 }
-#firstguy
+
+.normal
 {
-  float:right;
   width: 300px;
   -webkit-animation-iteration-count: infinite;
 }
-#secondguy
+
+.saiyan
 {
-  float:right;
   width: 350px;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-duration: 0.3s;
+}
+
+.rip
+{
+  width: 300px;
+  height: auto;
 }
