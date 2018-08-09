@@ -17692,9 +17692,9 @@ var Tamagotchi = exports.Tamagotchi = function () {
   _createClass(Tamagotchi, [{
     key: "SetPet",
     value: function SetPet() {
-      var foodLevel = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      var playLevel = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var restLevel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var foodLevel = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
+      var playLevel = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+      var restLevel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
       var score = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
 
       this.foodLevel = foodLevel;
@@ -17984,6 +17984,7 @@ $(function () {
       $(".game").fadeIn();
       var promise = new Promise(function (resolve, reject) {
         newPet.StartGame();
+        $("#firstguy").show();
         setTimeout(function () {
           if (newPet.GetScore() > 440) {
             resolve();
