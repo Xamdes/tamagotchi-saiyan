@@ -9,7 +9,7 @@
     "lint": "eslint src/*.js",
     "jamsine": "jasmine",
     "test": "karma start karma.conf.js",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build; gh-pages -d dist"
   },
   "keywords": [],
   "author": "",

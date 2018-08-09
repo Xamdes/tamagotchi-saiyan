@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ghpages = require('gh-pages');
-ghpages.publish('dist', function(err) {});
+ghpages.publish('dist',{dest: 'static/project'}, function(err) {});
 //const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 

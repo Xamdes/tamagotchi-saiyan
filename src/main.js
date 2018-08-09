@@ -32,7 +32,7 @@ $(function()
     $("#secondguy").hide();
     $("#rip").hide();
 
-    newPet.SetPet(10, 750, 750);
+    newPet.SetPet(100, 100, 100);
 
     setTimeout(() => {
       $(".game").fadeIn();
