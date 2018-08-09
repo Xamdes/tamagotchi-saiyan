@@ -12,8 +12,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: 'tamagotchi-saiyan'
+    path: path.resolve(__dirname, 'dist')
+    //publicPath: 'tamagotchi-saiyan'
   },
   devtool: 'source-map',
   //eval-source-map for development
