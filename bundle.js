@@ -4120,7 +4120,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "span {\n  font-size: 45px;\n  color: red;\n}\np {\n  font-size: 45px;\n  color: blue;\n}\nbutton {\n  font-size: 45px;\n}\n\n.homeindex\n{\n  text-align: center;\n}\na:hover\n{\n  text-decoration: underline;\n  cursor: pointer;\n}\n.initial-hidden\n{\n  display: none;\n}\n.yuge\n{\n  font-size: 100px;\n}\n.logoimg\n{\n  -webkit-animation-iteration-count: infinite;\n}\n#tamagotchihome\n{\n  width:75%;\n}\n#firstguy\n{\n  float:right;\n  width: 300px;\n  -webkit-animation-iteration-count: infinite;\n}\n#secondguy\n{\n  float:right;\n  width: 350px;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-duration: 0.3s;\n}\n", ""]);
+exports.push([module.i, "span {\n  font-size: 2em;\n  color: red;\n  text-align: center;\n  vertical-align: middle;\n}\n\np {\n  font-size: 2em;\n  color: blue;\n  text-align: center;\n  vertical-align: middle;\n}\n\nbutton {\n  font-size: 2em;\n  text-align: center;\n  vertical-align: middle;\n}\n\n.homeindex\n{\n  text-align: center;\n}\na:hover\n{\n  text-decoration: underline;\n  cursor: pointer;\n}\n.initial-hidden\n{\n  display: none;\n}\n.yuge\n{\n  font-size: 100px;\n}\n.logoimg\n{\n  -webkit-animation-iteration-count: infinite;\n}\n#tamagotchihome\n{\n  width:75%;\n}\n\n.normal\n{\n  width: 300px;\n  -webkit-animation-iteration-count: infinite;\n}\n\n.saiyan\n{\n  width: 350px;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-duration: 0.3s;\n}\n\n.rip\n{\n  width: 300px;\n  height: auto;\n}\n", ""]);
 
 // exports
 
@@ -17959,72 +17959,25 @@ __webpack_require__(/*! ./styles.css */ "./src/styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import Back from './img/background.jpg';
-$(function () {
+var characterId = "current-character";
 
-  SetImageSource("rip", _rip2.default);
+var characters = [];
+GetRickMortyImage(characters);
+
+$(function () {
+  $("#" + characterId).addClass("animated bounce character-animation");
   SetImageSource("tamagotchihome", _TamagotchiHead2.default);
   SetImageSource('logo-gif', _TamagotchiLogo2.default);
-  SetImageSource("firstguy", _Tamagotchi3.default);
-  SetImageSource("secondguy", _Tamagotchi5.default);
+  SetImageSource(characterId, _Tamagotchi3.default);
   var song = new Audio(_song2.default);
   song.loop = true;
   var newPet = new _Tamagotchi.Tamagotchi();
 
-  GetRickMortyImage();
-
   $(".indexp").click(function () {
-    song.currentTime = 0.0;
-    song.play();
-    $("#firstguy").hide();
-    $("#secondguy").hide();
-    $("#rip").hide();
-
-    newPet.SetPet();
-
-    setTimeout(function () {
-      $(".game").fadeIn();
-      var promise = new Promise(function (resolve, reject) {
-        newPet.StartGame();
-        $("#firstguy").show();
-        setTimeout(function () {
-          if (newPet.GetScore() > 440) {
-            resolve();
-          } else {
-            reject();
-          }
-        }, 45000);
-      });
-      promise.then(function () {
-        if (newPet.GetGameOver() === false) {
-          newPet.FurtherBeyond();
-          $("#firstguy").hide();
-          $("#secondguy").show();
-        }
-      }, function () {
-        song.pause();
-        $("#firstguy").hide();
-        $("#rip").show();
-        $("#play-again-toggle").show();
-      });
-    }, 6500);
-
-    var checkGameOver = setInterval(function () {
-      if (newPet.GetGameOver()) {
-        $("#firstguy").hide();
-        $("#secondguy").hide();
-        $("#rip").show();
-        $("#play-again-toggle").show();
-        song.pause();
-        clearInterval(checkGameOver);
-      }
-    }, 25);
-
     $(".homeindex").addClass("animated bounceOut");
     setTimeout(function () {
       $(".homeindex").hide();
     }, 1000);
-
     setTimeout(function () {
       $(".ready").fadeIn();
     }, 1000);
@@ -18036,17 +17989,44 @@ $(function () {
       $(".go").fadeOut();
     }, 6000);
 
-    $('#food').click(function () {
-      newPet.AddToFood(10);
-    });
+    $("#" + characterId).addClass("normal");
+    song.currentTime = 0.0;
+    song.play();
 
-    $('#play').click(function () {
-      newPet.AddToPlay(10);
-    });
+    newPet.SetPet();
 
-    $('#sleep').click(function () {
-      newPet.AddToRest(10);
-    });
+    setTimeout(function () {
+      $(".game").fadeIn();
+      var promise = new Promise(function (resolve, reject) {
+        newPet.StartGame();
+        SetImageSource(characterId, characters[0]);
+
+        setTimeout(function () {
+          if (newPet.GetScore() > 440) {
+            resolve();
+          } else {
+            reject();
+          }
+        }, 45000);
+      });
+      promise.then(function () {
+        newPet.FurtherBeyond();
+        $("#" + characterId).removeClass("normal");
+        $("#" + characterId).addClass("saiyan");
+        SetImageSource(characterId, characters[1]);
+      });
+    }, 6500);
+
+    var checkGameOver = setInterval(function () {
+      if (newPet.GetGameOver()) {
+        $("#" + characterId).removeClass("animated bounce normal saiyan");
+        $("#" + characterId).addClass("rip");
+        SetImageSource(characterId, _rip2.default);
+        $("#play-again-toggle").show();
+        song.pause();
+        clearInterval(checkGameOver);
+      }
+    }, 25);
 
     setInterval(function () {
       $("#output-score").html(newPet.GetScore());
@@ -18058,8 +18038,21 @@ $(function () {
 
   $("#play-again-button").click(function () {
     $(".homeindex").removeClass("animated bounceOut");
-    $(".game").fadeOut();
-    $(".homeindex").fadeIn();
+    $("#" + characterId).removeClass("rip");
+    $(".game").hide();
+    $(".homeindex").show();
+  });
+
+  $('#food').click(function () {
+    newPet.AddToFood(10);
+  });
+
+  $('#play').click(function () {
+    newPet.AddToPlay(10);
+  });
+
+  $('#sleep').click(function () {
+    newPet.AddToRest(10);
   });
 });
 
@@ -18067,7 +18060,7 @@ function SetImageSource(where, source) {
   $("#" + where).attr("src", source);
 }
 
-function GetRickMortyImage() {
+function GetRickMortyImage(characters) {
   var randomInt = GetRandomInt(1, 25);
   var url = 'https://rickandmortyapi.com/api/character/?page=' + randomInt;
 
@@ -18088,8 +18081,9 @@ function GetRickMortyImage() {
     var normal = GetRandomInt(0, 19);
     var saiyan = GetRandomInt(0, 19);
     var body = JSON.parse(response);
-    SetImageSource("firstguy", body.results[normal].image);
-    SetImageSource("secondguy", body.results[saiyan].image);
+    //console.log(body);
+    characters.push(body.results[normal].image);
+    characters.push(body.results[saiyan].image);
   });
 }
 
