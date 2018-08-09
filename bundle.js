@@ -18088,7 +18088,6 @@ function GetRickMortyImage() {
     var normal = GetRandomInt(0, 19);
     var saiyan = GetRandomInt(0, 19);
     var body = JSON.parse(response);
-    console.log(body);
     SetImageSource("firstguy", body.results[normal].image);
     SetImageSource("secondguy", body.results[saiyan].image);
   });
