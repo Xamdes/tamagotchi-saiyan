@@ -10,7 +10,7 @@ export class Tamagotchi
     this.gameOverWhy = "No Reason";
   }
 
-  SetPet(foodLevel, playLevel, restLevel, score = 0)
+  SetPet(foodLevel = 100, playLevel = 100, restLevel = 100, score = 0)
   {
     this.foodLevel = foodLevel;
     this.playLevel = playLevel;

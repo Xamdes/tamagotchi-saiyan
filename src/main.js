@@ -24,6 +24,31 @@ $(function()
   const newPet = new Tamagotchi();
 
 
+  let promise = new Promise(function(resolve, reject)
+  {
+    let request = new XMLHttpRequest();
+    let url = 'https://rickandmortyapi.com/api/character/';
+    request.onload = function()
+    {
+      if (this.status != 429) {
+        resolve(request.response);
+      } else {
+        reject(Error(request.statusText));
+      }
+    }
+    request.open("GET", url, true);
+    request.send();
+  });
+
+  promise.then(function(response)
+  {
+    const body = JSON.parse(response);
+    SetImageSource("firstguy",body.results[0].image);
+    SetImageSource("secondguy",body.results[1].image);
+  });
+
+
+
   $(".indexp").click(function()
   {
     song.currentTime = 0.0;
@@ -32,13 +57,14 @@ $(function()
     $("#secondguy").hide();
     $("#rip").hide();
 
-    newPet.SetPet(100, 100, 100);
+    newPet.SetPet();
 
     setTimeout(() => {
       $(".game").fadeIn();
       let promise = new Promise(function(resolve, reject)
       {
         newPet.StartGame();
+        $("#firstguy").show();
         setTimeout(() => {
           if (newPet.GetScore() > 440)
           {
