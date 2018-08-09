@@ -3,12 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ghpages = require('gh-pages');
+ghpages.publish('dist', function(err) {});
+//const ASSET_PATH = process.env.ASSET_PATH || '/';
+
 
 module.exports = {
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: 'tamagotchi-saiyan'
   },
   devtool: 'source-map',
   //eval-source-map for development
@@ -21,7 +26,7 @@ module.exports = {
       new UglifyJsPlugin({
         sourceMap: true,
         uglifyOptions: {
-          ecma: 8,
+          ecma: 6,
           compress: {
             arrows: true,
             booleans: true,
@@ -65,6 +70,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
+      //'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
