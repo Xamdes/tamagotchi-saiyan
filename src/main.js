@@ -23,29 +23,8 @@ $(function()
   song.loop = true;
   const newPet = new Tamagotchi();
 
+  GetRickMortyImage();
 
-  let promise = new Promise(function(resolve, reject)
-  {
-    let request = new XMLHttpRequest();
-    let url = 'https://rickandmortyapi.com/api/character/';
-    request.onload = function()
-    {
-      if (this.status != 429) {
-        resolve(request.response);
-      } else {
-        reject(Error(request.statusText));
-      }
-    }
-    request.open("GET", url, true);
-    request.send();
-  });
-
-  promise.then(function(response)
-  {
-    const body = JSON.parse(response);
-    SetImageSource("firstguy",body.results[0].image);
-    SetImageSource("secondguy",body.results[1].image);
-  });
 
 
 
@@ -87,7 +66,7 @@ $(function()
       },
       function()
       {
-        song.stop();
+        song.pause();
         $("#firstguy").hide();
         $("#rip").show();
         $("#play-again-toggle").show();
@@ -144,6 +123,7 @@ $(function()
 
   $("#play-again-button").click(function()
   {
+    $(".homeindex").removeClass("animated bounceOut");
     $(".game").fadeOut();
     $(".homeindex").fadeIn();
   });
@@ -154,4 +134,40 @@ $(function()
 function SetImageSource(where,source)
 {
   $("#"+where).attr("src",source);
+}
+
+function GetRickMortyImage()
+{
+  let randomInt = GetRandomInt(1,25);
+  let url = `https://rickandmortyapi.com/api/character/?page=${randomInt}`;
+
+  let promise = new Promise(function(resolve, reject)
+  {
+    let request = new XMLHttpRequest();
+    request.onload = function()
+    {
+      if (this.status != 429) {
+        resolve(request.response);
+      } else {
+        reject(Error(request.statusText));
+      }
+    }
+    request.open("GET", url, true);
+    request.send();
+  });
+
+  promise.then(function(response)
+  {
+    const normal = GetRandomInt(0,19);
+    const saiyan = GetRandomInt(0,19);
+    const body = JSON.parse(response);
+    console.log(body);
+    SetImageSource("firstguy",body.results[normal].image);
+    SetImageSource("secondguy",body.results[saiyan].image);
+  });
+}
+
+function GetRandomInt(min, max)
+{
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
