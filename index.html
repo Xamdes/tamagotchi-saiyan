@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- <link href="../src/animate.css" rel="stylesheet" type="text/css"> -->
+  <title>Tamagotchi Saiyan</title>
+  <body class="background">
+    <!-- <h3 id="food">gsgfg</h3> -->
+    <div class="container">
+
+    <div class="homeindex">
+      <p><img id="tamagotchihome" class="animated bounce slow logoimg"></p>
+      <h1 class="yuge">SAIYAN</h1>
+      <p class="indexp"><a>START!</a></p>
+      <p><img id="logo-gif"></p>
+    </div>
+    <div class="initial-hidden ready">
+      <h1 class="yuge">READY...</h1>
+    </div>
+    <div class="initial-hidden go">
+      <h1 class="yuge">GO!</h1>
+
+    </div>
+    <div class=" initial-hidden game">
+      <div class="jumbotron">
+        <p>SCORE: <span id="output-score"></span></p>
+      </div>
+      <img id="firstguy" class="animated bounce">
+      <img id="secondguy" class="animated bounce initial-hidden">
+      <img id="rip" class="initial-hidden">
+      <div class="row">
+        <div class="col-md-6">
+          Food: <span id="outFood"></span>
+        </div>
+        <div class="col-md-6">
+          <button type="button" name="button" id="food">Click to Feed</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          Activity: <span id="outPlay"></span>
+        </div>
+        <div class="col-md-6">
+          <button type="button" name="button" id="play">Click to Play</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          Rest: <span id="outSleep"></span>
+        </div>
+        <div class="col-md-6">
+          <button type="button" name="button" id="sleep">Click to Sleep</button>
+        </div>
+      </div>
+      <div id="play-again-toggle" class="initial-hidden">
+        <button id="play-again-button" type="button" name="button">Play Again</button>
+        <!-- <a href="../src/index.html">Play Again!</a> -->
+      </div>
+      <p id="test3"></p>
+      <p id="test4"></p>
+    </div>
+  </div>
+  <script type="text/javascript" src="tamagotchi-saiyan/bundle.js"></script></body>
+  </html>
